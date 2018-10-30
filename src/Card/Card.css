@@ -30,6 +30,11 @@
   .square:focus {
     outline: none;
   }
+
+  /* .square:nth-child(3), .square:nth-child(6){
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+  } */
   
   .kbd-navigation .square:focus {
     background: #ddd;
