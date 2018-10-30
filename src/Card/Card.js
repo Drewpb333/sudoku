@@ -3,7 +3,7 @@ import './Card.css';
 
 const card = props=> {
     let display;
-    if(props.children != 0){
+    if(props.children !== 0){
         display = props.children;
     }
     else{
