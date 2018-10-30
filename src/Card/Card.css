@@ -30,11 +30,6 @@
   .square:focus {
     outline: none;
   }
-
-  /* .square:nth-child(3), .square:nth-child(6){
-    border-bottom: 3px solid black;
-    border-right: 3px solid black;
-  } */
   
   .kbd-navigation .square:focus {
     background: #ddd;
@@ -49,3 +44,10 @@
     margin-left: 20px;
   }
   
+  .inputSquare {
+    max-width: 80%;
+    height: 80%;
+    font-size: 24px;
+    text-align: center;
+    border: none;
+  }

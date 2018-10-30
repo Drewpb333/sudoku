@@ -26,10 +26,10 @@ class App extends Component {
   //finds unsolved number
   removeRandomNumber = arrRow =>{
     let randomInt = Math.floor(Math.random() * 9);
-    while(this.state.unsolvedBoard.indexOf(randomInt) === 0){
+    // while(this.state.unsolvedBoard.indexOf(randomInt) === 0){
       console.log(`${arrRow}\n${randomInt}`);
       randomInt = Math.floor(Math.random() * 9);
-    }
+    // }
     return randomInt;
   }
 
@@ -37,6 +37,7 @@ class App extends Component {
   createUnsolvedBoard = () => {
     let unsolvedBoard = this.state.board.slice();
     //removes four to six input values
+    console.log(unsolvedBoard.length);
     for(let q = 0; q < unsolvedBoard.length; q++){
       const y = Math.floor(Math.random() * 3) + 4;
       for(let j = 0; j < y; j++){
