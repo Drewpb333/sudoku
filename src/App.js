@@ -6,7 +6,8 @@ import './Card/Card.css';
 
 class App extends Component {
   state = {
-    board: []
+    board: [],
+    unsolvedBoard: []
   };
 
   createBoardArr = () =>{
@@ -22,12 +23,31 @@ class App extends Component {
     this.setState({board});
   };
 
+  //adds input boxes for blank spaces
+  createUnsolvedBoard = () => {
+    let unsolvedArr = this.state.board.slice();
+    //removes four to six input values
+    for(let q = 0; q < unsolvedArr.length; q++){
+      const y = Math.floor(Math.random() * 3) + 4;
+      for(let j = 0; j < y; j++){
+        
+      }
+    }
+    this.setState({unsolvedBoard: unsolvedArr});
+  }
+
   componentWillMount = () =>{
     this.createBoardArr();
   }
 
+  componentDidMount = () => {
+    this.createUnsolvedBoard();
+  }
+
   render() {
     //change this later so it's no rerendered every time
+    console.log(this.state.unsolvedBoard);
+    console.log(this.state.unsolvedBoard);
 
     const boardRows = row => {
       return( <div className='boardRow' key={row}>
