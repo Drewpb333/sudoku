@@ -48,6 +48,10 @@ class App extends Component {
     this.setState({unsolvedBoard});
   }
 
+  handleInput (val) {
+    console.log(val);
+  }
+
   componentWillMount = () =>{
     this.createBoardArr();
   }
@@ -63,7 +67,28 @@ class App extends Component {
 
     const boardRows = row => {
       return( <div className='boardRow' key={row}>
-        <Card>{this.state.board[row][0]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][0]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][1]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][2]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][3]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][4]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][5]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][6]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][7]}</Card>
+        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][8]}</Card>
+
+
+        {/*
+        <Card onChange={this.handleInput}>{this.state.board[row][1]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][2]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][3]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][4]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][5]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][6]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][7]}</Card>
+        <Card onChange={this.handleInput}>{this.state.board[row][8]}</Card>
+
+        
         <Card>{this.state.board[row][1]}</Card>
         <Card>{this.state.board[row][2]}</Card>
         <Card>{this.state.board[row][3]}</Card>
@@ -72,6 +97,7 @@ class App extends Component {
         <Card>{this.state.board[row][6]}</Card>
         <Card>{this.state.board[row][7]}</Card>
         <Card>{this.state.board[row][8]}</Card>
+        */}
       </div>);
     }
 
@@ -79,7 +105,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2 className="numberClicked">{this.state.numberClicked}</h2>
+
         </header>       
         <div className="board">
           {boardRows(0)}
