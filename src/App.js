@@ -44,6 +44,16 @@ class App extends Component {
     this.setState({unsolvedBoard: updatedBoard});
     console.log(this.state.board);
     console.log(this.state.unsolvedBoard);
+    this.puzzleSolvedHandler();
+  }
+
+  puzzleSolvedHandler(){
+    if(this.state.board === this.state.unsolvedBoard){
+      alert("Congrats! You Won!");
+    }
+    else{
+      console.log("Keep trying!");
+    }
   }
 
   componentWillMount = () =>{
@@ -55,8 +65,7 @@ class App extends Component {
   }
 
   render() {
-    //change this later so it's no rerendered every time
-
+    console.log(this.state.board);
     const boardRows = row => {
       return( <div className='boardRow' key={row}>
         <Card handleInput={(val)=>this.handleInput(val, row, 0)}>{this.state.board[row][0]}</Card>
@@ -75,7 +84,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-
         </header>       
         <div className="board">
           {boardRows(0)}
@@ -88,6 +96,7 @@ class App extends Component {
           {boardRows(7)}
           {boardRows(8)}
         </div>
+        <button>Check Puzzle</button>
       </div>
     );
   }
