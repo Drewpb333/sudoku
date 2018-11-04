@@ -38,8 +38,12 @@ class App extends Component {
     this.setState({unsolvedBoard});
   }
 
-  handleInput (val) {
-    console.log(val);
+  handleInput (val, row, col) {
+    const updatedBoard = this.state.unsolvedBoard.slice();
+    updatedBoard[row][col] = parseInt(val);
+    this.setState({unsolvedBoard: updatedBoard});
+    console.log(this.state.board);
+    console.log(this.state.unsolvedBoard);
   }
 
   componentWillMount = () =>{
@@ -52,42 +56,18 @@ class App extends Component {
 
   render() {
     //change this later so it's no rerendered every time
-    console.log(this.state.unsolvedBoard);
-    console.log(this.state.unsolvedBoard);
 
     const boardRows = row => {
       return( <div className='boardRow' key={row}>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][0]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][1]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][2]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][3]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][4]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][5]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][6]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][7]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][8]}</Card>
-
-
-        {/*
-        <Card onChange={this.handleInput}>{this.state.board[row][1]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][2]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][3]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][4]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][5]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][6]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][7]}</Card>
-        <Card onChange={this.handleInput}>{this.state.board[row][8]}</Card>
-
-        
-        <Card>{this.state.board[row][1]}</Card>
-        <Card>{this.state.board[row][2]}</Card>
-        <Card>{this.state.board[row][3]}</Card>
-        <Card>{this.state.board[row][4]}</Card>
-        <Card>{this.state.board[row][5]}</Card>
-        <Card>{this.state.board[row][6]}</Card>
-        <Card>{this.state.board[row][7]}</Card>
-        <Card>{this.state.board[row][8]}</Card>
-        */}
+        <Card handleInput={(val)=>this.handleInput(val, row, 0)}>{this.state.board[row][0]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 1)}>{this.state.board[row][1]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 2)}>{this.state.board[row][2]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 3)}>{this.state.board[row][3]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 4)}>{this.state.board[row][4]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 5)}>{this.state.board[row][5]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 6)}>{this.state.board[row][6]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 7)}>{this.state.board[row][7]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val, row, 8)}>{this.state.board[row][8]}</Card>
       </div>);
     }
 
