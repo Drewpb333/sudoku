@@ -1,0 +1,3 @@
+//Pass code from card component to app component
+//I want to console.log original array and unsolved array whenever user enters a number
+

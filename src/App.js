@@ -23,16 +23,6 @@ class App extends Component {
     this.setState({board});
   };
 
-  //finds unsolved number
-  removeRandomNumber = arrRow =>{
-    let randomInt = Math.floor(Math.random() * 9);
-    // while(this.state.unsolvedBoard.indexOf(randomInt) === 0){
-      console.log(`${arrRow}\n${randomInt}`);
-      randomInt = Math.floor(Math.random() * 9);
-    // }
-    return randomInt;
-  }
-
   //adds input boxes for blank spaces
   createUnsolvedBoard = () => {
     let unsolvedBoard = this.state.board.slice();
@@ -41,7 +31,7 @@ class App extends Component {
     for(let q = 0; q < unsolvedBoard.length; q++){
       const y = Math.floor(Math.random() * 3) + 4;
       for(let j = 0; j < y; j++){
-        const rand = this.removeRandomNumber(unsolvedBoard[q]);
+        const rand = Math.floor(Math.random() * 9);
         unsolvedBoard[q][rand] = 0;
       }
     }
@@ -67,15 +57,15 @@ class App extends Component {
 
     const boardRows = row => {
       return( <div className='boardRow' key={row}>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][0]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][1]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][2]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][3]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][4]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][5]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][6]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][7]}</Card>
-        <Card onChange={(val)=>this.handleInput(val)}>{this.state.board[row][8]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][0]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][1]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][2]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][3]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][4]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][5]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][6]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][7]}</Card>
+        <Card handleInput={(val)=>this.handleInput(val)}>{this.state.board[row][8]}</Card>
 
 
         {/*

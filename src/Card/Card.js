@@ -7,7 +7,7 @@ const card = props=> {
         display = props.children;
     }
     else{
-        display = <input type="text" className="inputSquare" onChange={e=> console.log(e.target.value)}></input>
+        display = <input type="text" className="inputSquare" onChange={e=> props.handleInput(e.target.value)}></input>
     }
 
     return (
