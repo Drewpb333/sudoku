@@ -7,7 +7,7 @@ class App extends Component {
   state = {
     board: [],
     unsolvedBoard: []
-  };
+  }
 
   createBoardArr = () =>{
     let board = [[],[],[],[],[],[],[],[],[]];
@@ -19,14 +19,20 @@ class App extends Component {
         numsArr.splice(randIndex, 1);
       }
     }
-    this.setState({board});
+    console.log(board);
+    const unsolvedBoard = this.createUnsolvedBoard(board);
+    this.setState({
+      board: board,
+      unsolvedBoard: unsolvedBoard
+    })
   };
 
   //adds input boxes for blank spaces
-  createUnsolvedBoard = () => {
-    let unsolvedBoard = this.state.board.slice();
+  createUnsolvedBoard = (board) => {
+    let unsolvedBoard = board.map((val, i)=>{
+      return [...board[i]];
+    })    
     //removes four to six input values
-    console.log(unsolvedBoard.length);
     for(let q = 0; q < unsolvedBoard.length; q++){
       const y = Math.floor(Math.random() * 3) + 4;
       for(let j = 0; j < y; j++){
@@ -34,7 +40,7 @@ class App extends Component {
         unsolvedBoard[q][rand] = 0;
       }
     }
-    this.setState({unsolvedBoard});
+    return unsolvedBoard;
   }
 
   handleInput (val, row, col) {
@@ -59,11 +65,12 @@ class App extends Component {
     this.createBoardArr();
   }
 
-  componentDidMount = () => {
-    this.createUnsolvedBoard();
-  }
+  // componentDidMount = () => {
+  //   this.createUnsolvedBoard();
+  // }
 
   render() {
+    console.log(this.state);
     // console.log(this.state.board);
     // const boardRows = row => {
     //   return( <div className='boardRow' key={row}>

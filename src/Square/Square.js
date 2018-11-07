@@ -3,8 +3,8 @@ import Classes from './Square.css';
 
 const Square = props=> {
     let display;
-    if(props.children !== 0){
-        display = props.children;
+    if(props.value !== 0){
+        display = props.value;
     }
     else{
         display = <input type="text" className="inputSquare" onChange={e=> props.handleInput(e.target.value)}></input>

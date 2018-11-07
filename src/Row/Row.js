@@ -8,7 +8,9 @@ const Row = props => {
     });
 
     return (
-        {squareValues}
+        <div>
+            {squareValues}
+        </div>
     );
 }
 
