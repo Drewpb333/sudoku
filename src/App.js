@@ -43,10 +43,15 @@ class App extends Component {
     return unsolvedBoard;
   }
 
-  handleInput (val, row, col) {
-    const updatedBoard = this.state.unsolvedBoard.slice();
-    updatedBoard[row][col] = parseInt(val);
-    this.setState({unsolvedBoard: updatedBoard});
+  //input is array equal to value, row, and column of number
+  handleInput (input) {
+    const value = parseInt(input[0]);
+    const row = input[1];
+    const column = input[2];
+    this.setState(prevState=>{
+      prevState.unsolvedBoard[row][column] = value;
+      return {unsolvedBoard: prevState};
+    });
     console.log(this.state.board);
     console.log(this.state.unsolvedBoard);
     this.puzzleSolvedHandler();
@@ -64,10 +69,6 @@ class App extends Component {
   componentWillMount = () =>{
     this.createBoardArr();
   }
-
-  // componentDidMount = () => {
-  //   this.createUnsolvedBoard();
-  // }
 
   render() {
     console.log(this.state);
@@ -92,7 +93,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
         <div className="board">
-          <Card board={this.state.board} unsolvedBoard={this.state.unsolvedBoard} handleInput={this.handleInput}/>
+          <Card unsolvedBoard={this.state.unsolvedBoard} handleInput={(input)=>{this.handleInput(input)}}/>
         </div>
         <button>Check Puzzle</button>
       </div>
