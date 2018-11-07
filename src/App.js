@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Card from './Card/Card';
-import './Card/Card.css';
 
 class App extends Component {
   state = {
@@ -65,20 +64,20 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.board);
-    const boardRows = row => {
-      return( <div className='boardRow' key={row}>
-        <Card handleInput={(val)=>this.handleInput(val, row, 0)}>{this.state.board[row][0]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 1)}>{this.state.board[row][1]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 2)}>{this.state.board[row][2]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 3)}>{this.state.board[row][3]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 4)}>{this.state.board[row][4]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 5)}>{this.state.board[row][5]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 6)}>{this.state.board[row][6]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 7)}>{this.state.board[row][7]}</Card>
-        <Card handleInput={(val)=>this.handleInput(val, row, 8)}>{this.state.board[row][8]}</Card>
-      </div>);
-    }
+    // console.log(this.state.board);
+    // const boardRows = row => {
+    //   return( <div className='boardRow' key={row}>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 0)}>{this.state.board[row][0]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 1)}>{this.state.board[row][1]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 2)}>{this.state.board[row][2]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 3)}>{this.state.board[row][3]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 4)}>{this.state.board[row][4]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 5)}>{this.state.board[row][5]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 6)}>{this.state.board[row][6]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 7)}>{this.state.board[row][7]}</Card>
+    //     <Card handleInput={(val)=>this.handleInput(val, row, 8)}>{this.state.board[row][8]}</Card>
+    //   </div>);
+    // }
 
     return (
       <div className="App">
@@ -86,15 +85,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
         <div className="board">
-          {boardRows(0)}
-          {boardRows(1)}
-          {boardRows(2)}
-          {boardRows(3)}
-          {boardRows(4)}
-          {boardRows(5)}
-          {boardRows(6)}
-          {boardRows(7)}
-          {boardRows(8)}
+          <Card board={this.state.board} unsolvedBoard={this.state.unsolvedBoard} handleInput={this.handleInput}/>
         </div>
         <button>Check Puzzle</button>
       </div>

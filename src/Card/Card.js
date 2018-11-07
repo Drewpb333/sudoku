@@ -1,20 +1,20 @@
 import React from 'react';
-import './Card.css';
+import App from '../App';
+import Row from '../Row/Row';
+import Classes from './Card.css';
 
-const card = props=> {
-    let display;
-    if(props.children !== 0){
-        display = props.children;
-    }
-    else{
-        display = <input type="text" className="inputSquare" onChange={e=> props.handleInput(e.target.value)}></input>
-    }
-
+const Card = props=> {
+    //delete after unsolvedboard works
+    const rows = props.board.map(row=>{
+        return <Row values={row}/>;
+    })
+    
+    const unsolvedRows = props.unsolvedBoard.map(row=>{
+        return <Row values={row}/>;
+    })
     return (
-        <div className="square">
-            {display}
-        </div>
+        {rows}
     );
 };
 
-export default card;
+export default Card;
