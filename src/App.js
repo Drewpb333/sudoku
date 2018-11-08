@@ -51,19 +51,28 @@ class App extends Component {
     this.setState(prevState=>{
       const unsolvedBoard = prevState.unsolvedBoard;
       unsolvedBoard[row][column] = value;
+      this.puzzleSolvedHandler(unsolvedBoard);
       return {unsolvedBoard};
     });
-    console.log(this.state.board);
-    console.log(this.state.unsolvedBoard);
-    this.puzzleSolvedHandler();
   }
 
-  puzzleSolvedHandler = ()=>{
-    if(this.state.board === this.state.unsolvedBoard){
+  puzzleSolvedHandler = unsolvedBoard=>{
+    let solved = true;
+    const solvedBoard = this.state.board;
+    for(let i = 0; i < solvedBoard.length; i++){
+      for(let j = 0; j < solvedBoard[i].length; j++){
+        if(solvedBoard[i][j] !== unsolvedBoard[i][j]) {
+          console.log(solvedBoard[i][j]);
+          console.log(unsolvedBoard[i][j]);
+          solved = false;
+        }
+      }
+    }
+    if(solved){
       alert("Congrats! You Won!");
     }
     else{
-      console.log("Keep trying!");
+      console.log("Keep trying");
     }
   }
 
@@ -72,21 +81,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.board);
-    // const boardRows = row => {
-    //   return( <div className='boardRow' key={row}>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 0)}>{this.state.board[row][0]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 1)}>{this.state.board[row][1]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 2)}>{this.state.board[row][2]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 3)}>{this.state.board[row][3]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 4)}>{this.state.board[row][4]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 5)}>{this.state.board[row][5]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 6)}>{this.state.board[row][6]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 7)}>{this.state.board[row][7]}</Card>
-    //     <Card handleInput={(val)=>this.handleInput(val, row, 8)}>{this.state.board[row][8]}</Card>
-    //   </div>);
-    // }
-
     return (
       <div className="App">
         <header className="App-header">
