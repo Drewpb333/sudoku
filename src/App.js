@@ -28,7 +28,7 @@ class App extends Component {
   };
 
   //adds input boxes for blank spaces
-  createUnsolvedBoard = (board) => {
+  createUnsolvedBoard = board => {
     let unsolvedBoard = board.map((val, i)=>{
       return [...board[i]];
     })    
@@ -44,20 +44,21 @@ class App extends Component {
   }
 
   //input is array equal to value, row, and column of number
-  handleInput (input) {
+  handleInput = input=>{
     const value = parseInt(input[0]);
     const row = input[1];
     const column = input[2];
     this.setState(prevState=>{
-      prevState.unsolvedBoard[row][column] = value;
-      return {unsolvedBoard: prevState};
+      const unsolvedBoard = prevState.unsolvedBoard;
+      unsolvedBoard[row][column] = value;
+      return {unsolvedBoard};
     });
     console.log(this.state.board);
     console.log(this.state.unsolvedBoard);
     this.puzzleSolvedHandler();
   }
 
-  puzzleSolvedHandler(){
+  puzzleSolvedHandler = ()=>{
     if(this.state.board === this.state.unsolvedBoard){
       alert("Congrats! You Won!");
     }
@@ -71,7 +72,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
     // console.log(this.state.board);
     // const boardRows = row => {
     //   return( <div className='boardRow' key={row}>
@@ -93,7 +93,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
         <div className="board">
-          <Card unsolvedBoard={this.state.unsolvedBoard} handleInput={(input)=>{this.handleInput(input)}}/>
+          <Card unsolvedBoard={this.state.unsolvedBoard} handleInput={input=>this.handleInput(input)}/>
         </div>
         <button>Check Puzzle</button>
       </div>

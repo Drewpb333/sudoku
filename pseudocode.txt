@@ -1,3 +1,24 @@
 //Pass code from card component to app component
 //I want to console.log original array and unsolved array whenever user enters a number
 
+//11.7.2018
+//Refactor components
+    //create a Row and a Square component
+    //get rid of index.js
+    //get rid of unnecessary css
+//add media queries for mobile devices
+    //change board, row, and square css most likely
+    //change css so input stays green
+//make sure random sudoku output is correct
+    //no repeated numbers in the same column or row
+
+
+//11.8.2018
+    //What's left to do?
+        //make sure comparison array works
+        //Make media queries for different sizes
+        //find a different logo?
+        //create a button that checks board and unsolved board and highlights
+        correct vs. incorrect squares
+
+
