@@ -1,43 +1,22 @@
-.square {
-  background: #fff;
-  border: 2px solid #999;
-  float: left;
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 100px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 100px;
-}
-
-.numberClicked {
-  position: absolute;
-  right: 10px;
-}
-
 .board {
   width: 40%;
   margin: auto;
-  padding-top: 30px;
+  margin-top: 20px;
+  padding-top: 20px;
+  vertical-align: middle;
+  border-collapse: collapse;
 }
 
-.boardRow:nth-child(3) .square, .boardRow:nth-child(6) .square{
-  border-bottom: 2px solid black;
+@media screen and (max-width: 500px){
+  .board{
+    width: 90%;
+  }
 }
 
-.boardRow:nth-child(4) .square, .boardRow:nth-child(7) .square{
-  border-top: 2px solid black; 
-}
-
-.boardRow .square:nth-child(3), .boardRow .square:nth-child(6){
-  border-right: 2px solid black;
-}
-
-.boardRow .square:nth-child(4), .boardRow .square:nth-child(7){
-  border-left: 2px solid black;
+@media screen and (max-width: 1040){
+  .board{
+    width: 80%;
+  }
 }
 
 .App {
@@ -62,6 +41,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+button{
+  margin: 20px;
 }
 
 @keyframes App-logo-spin {

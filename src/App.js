@@ -19,13 +19,27 @@ class App extends Component {
         numsArr.splice(randIndex, 1);
       }
     }
-    console.log(board);
+    this.checkBoardColumns(board);
     const unsolvedBoard = this.createUnsolvedBoard(board);
     this.setState({
       board: board,
       unsolvedBoard: unsolvedBoard
     })
+    console.log(board);
   };
+
+  //creates new array to prevent duplicate numbers in columns
+  checkBoardColumns = board =>{
+    const boardColumns = board.slice();
+    for(let i = 0; i < 9; i++){
+      for(let j = 0; j < 9; j++){
+        boardColumns[i][j] = board[j][i];
+      }
+    }
+
+    console.log(boardColumns);
+    // return boardColumns;
+  }
 
   //adds input boxes for blank spaces
   createUnsolvedBoard = board => {
@@ -34,7 +48,7 @@ class App extends Component {
     })    
     //removes four to six input values
     for(let q = 0; q < unsolvedBoard.length; q++){
-      const y = Math.floor(Math.random() * 3) + 4;
+      const y = Math.floor(Math.random() * 2);
       for(let j = 0; j < y; j++){
         const rand = Math.floor(Math.random() * 9);
         unsolvedBoard[q][rand] = 0;
@@ -51,19 +65,17 @@ class App extends Component {
     this.setState(prevState=>{
       const unsolvedBoard = prevState.unsolvedBoard;
       unsolvedBoard[row][column] = value;
-      this.puzzleSolvedHandler(unsolvedBoard);
       return {unsolvedBoard};
     });
   }
 
-  puzzleSolvedHandler = unsolvedBoard=>{
+  puzzleSolvedHandler = () =>{
     let solved = true;
     const solvedBoard = this.state.board;
+    const unsolvedBoard = this.state.unsolvedBoard;
     for(let i = 0; i < solvedBoard.length; i++){
       for(let j = 0; j < solvedBoard[i].length; j++){
         if(solvedBoard[i][j] !== unsolvedBoard[i][j]) {
-          console.log(solvedBoard[i][j]);
-          console.log(unsolvedBoard[i][j]);
           solved = false;
         }
       }
@@ -72,7 +84,7 @@ class App extends Component {
       alert("Congrats! You Won!");
     }
     else{
-      console.log("Keep trying");
+      alert("Keep trying");
     }
   }
 
@@ -86,10 +98,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
-        <div className="board">
+        <table className="board">
           <Card unsolvedBoard={this.state.unsolvedBoard} handleInput={input=>this.handleInput(input)}/>
-        </div>
-        <button>Check Puzzle</button>
+        </table>
+        <button onClick={this.puzzleSolvedHandler}>Check Puzzle</button>
       </div>
     );
   }

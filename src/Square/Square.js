@@ -13,9 +13,9 @@ const Square = props=> {
     }
 
     return (
-        <div className="square" id={props.id}>
+        <td className="square" id={props.id}>
             {display}
-        </div>
+        </td>
     );
 };
 

@@ -8,9 +8,9 @@ const Row = props => {
     });
 
     return (
-        <div>
+        <tr className="boardRow">
             {squareValues}
-        </div>
+        </tr>
     );
 }
 
