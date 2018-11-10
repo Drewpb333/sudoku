@@ -1,19 +1,21 @@
 import React from 'react';
-import Classes from './Square.css';
+import './Square.css';
 
-const Square = props=> {
+const Square = props=> {   
     let display;
     //row coordinate is equal to first number and column coordinate is equal to second
-    const coordinates = [props.id.split("")[0], props.id.split("")[1]];
-    if(props.value !== 0){
+    const row = props.id.split("")[0];
+    const column = props.id.split("")[1];
+    //checks original unsolved array to see if value is 0
+    if(props.original[row][column] !== 0){
         display = props.value;
     }
     else{
-        display = <input type="text" className="inputSquare" onChange={e=> props.handleInput([e.target.value, ...coordinates])}></input>
+        display = <input type="text" className="inputSquare" onChange={e=> props.handleInput([e.target.value, row, column])}></input>
     }
 
     return (
-        <td className="square" id={props.id}>
+        <td className="square" style={display!==props.value?{"background": "#bdf3bd"}:{}} id={props.id}>
             {display}
         </td>
     );

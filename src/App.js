@@ -6,7 +6,9 @@ import Card from './Card/Card';
 class App extends Component {
   state = {
     board: [],
-    unsolvedBoard: []
+    unsolvedBoard: [],
+    //for persisting original state in Square components
+    originalUnsolvedBoard: []
   }
 
   createBoardArr = () =>{
@@ -20,12 +22,12 @@ class App extends Component {
       }
     }
     this.checkBoardColumns(board);
-    const unsolvedBoard = this.createUnsolvedBoard(board);
+    const [unsolvedBoard, originalUnsolvedBoard] = this.createUnsolvedBoard(board);
     this.setState({
-      board: board,
-      unsolvedBoard: unsolvedBoard
+      board,
+      unsolvedBoard,
+      originalUnsolvedBoard
     })
-    console.log(board);
   };
 
   //creates new array to prevent duplicate numbers in columns
@@ -36,8 +38,6 @@ class App extends Component {
         boardColumns[i][j] = board[j][i];
       }
     }
-
-    console.log(boardColumns);
     // return boardColumns;
   }
 
@@ -45,16 +45,20 @@ class App extends Component {
   createUnsolvedBoard = board => {
     let unsolvedBoard = board.map((val, i)=>{
       return [...board[i]];
-    })    
+    });
+    let originalUnsolvedBoard = board.map((val, i)=>{
+      return[...board[i]];
+    });
     //removes four to six input values
     for(let q = 0; q < unsolvedBoard.length; q++){
       const y = Math.floor(Math.random() * 2);
       for(let j = 0; j < y; j++){
         const rand = Math.floor(Math.random() * 9);
         unsolvedBoard[q][rand] = 0;
+        originalUnsolvedBoard[q][rand] = 0;
       }
     }
-    return unsolvedBoard;
+    return [unsolvedBoard, originalUnsolvedBoard];
   }
 
   //input is array equal to value, row, and column of number
@@ -93,13 +97,14 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.board);
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
         <table className="board">
-          <Card unsolvedBoard={this.state.unsolvedBoard} handleInput={input=>this.handleInput(input)}/>
+          <Card unsolvedBoard={this.state.unsolvedBoard} original={this.state.originalUnsolvedBoard} handleInput={input=>this.handleInput(input)}/>
         </table>
         <button onClick={this.puzzleSolvedHandler}>Check Puzzle</button>
       </div>

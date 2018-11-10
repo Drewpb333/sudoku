@@ -1,15 +1,3 @@
-.inputSquare {
-    background: #bdf3bd;
-    color: #78cc78;
-    max-width: 80%;
-    height: 80%;
-    font-size: 24px;
-    text-align: center;
-    border: none;
-    font-weight: 700;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
-
 .square {
   background: #fff;
   border: 2px solid #999;
@@ -23,6 +11,22 @@
   padding: 0;
   text-align: center;
   width: 50px;
+}
+
+.inputSquare {
+  background: #bdf3bd;
+  color: #187318;
+  max-width: 80%;
+  height: 80%;
+  font-size: 24px;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.inputBackground {
+  background: #bdf3bd;
 }
 
 .square:focus {

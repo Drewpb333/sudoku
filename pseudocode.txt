@@ -18,7 +18,6 @@
         //make sure comparison array works
         //Make media queries for different sizes
         //find a different logo?
-        //create a button that checks board and unsolved board and highlights
-        correct vs. incorrect squares
+        //create a button that checks board and unsolved board and highlights correct vs. incorrect squares
 
 
