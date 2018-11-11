@@ -21,3 +21,9 @@
         //create a button that checks board and unsolved board and highlights correct vs. incorrect squares
 
 
+11.11.2018
+    Need to add a readme
+        Several photos
+    Add red background and get rid of green background until solved button clicked
+    Change CSS of button
+    Change title(?)

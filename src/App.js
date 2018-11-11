@@ -69,9 +69,9 @@ class App extends Component {
     let originalUnsolvedBoard = board.map((val, i)=>{
       return[...board[i]];
     });
-    //removes four to six input values
+    //removes three to five input values
     for(let q = 0; q < unsolvedBoard.length; q++){
-      const y = Math.floor(Math.random() * 2);
+      const y = Math.floor(Math.random() * 3) + 3;
       for(let j = 0; j < y; j++){
         const rand = Math.floor(Math.random() * 9);
         unsolvedBoard[q][rand] = 0;
