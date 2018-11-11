@@ -13,15 +13,23 @@ class App extends Component {
 
   createBoardArr = () =>{
     let board = [[],[],[],[],[],[],[],[],[]];
+    board.forEach(x=>x = [0,0,0,0,0,0,0,0,0]);
     for(var i=0; i < 9; i++){
-      let numsArr = [1,2,3,4,5,6,7,8,9];
-      for(var j=0; j < 9; j++){
-        const randIndex = Math.floor(Math.random() * numsArr.length);
-        board[i][j] = numsArr[randIndex];
-        numsArr.splice(randIndex, 1);
+      const boardColumns = this.checkBoardColumns(board);
+      let noDuplicates = false;
+      while(noDuplicates === false){
+        let boardRow = this.addNumbertoSquare(board[i]);      
+        for(let q=0; q < 9; q++){
+          if(boardColumns[q].includes(boardRow[q])){
+            break;
+          }
+          else if(q === 8){
+            noDuplicates = true;
+          }
+        }
       }
     }
-    this.checkBoardColumns(board);
+    // this.checkBoardColumns(board);
     const [unsolvedBoard, originalUnsolvedBoard] = this.createUnsolvedBoard(board);
     this.setState({
       board,
@@ -30,15 +38,27 @@ class App extends Component {
     })
   };
 
+  addNumbertoSquare = boardRow =>{
+    let numsArr = [1,2,3,4,5,6,7,8,9];
+    for(var j=0; j < 9; j++){
+      const randIndex = Math.floor(Math.random() * numsArr.length);
+      boardRow[j] = numsArr[randIndex];
+      numsArr.splice(randIndex, 1);
+    }
+    return boardRow;
+  }
+
   //creates new array to prevent duplicate numbers in columns
   checkBoardColumns = board =>{
-    const boardColumns = board.slice();
+    let boardColumns = board.map((val, i)=>{
+      return [...board[i]];
+    })
     for(let i = 0; i < 9; i++){
       for(let j = 0; j < 9; j++){
         boardColumns[i][j] = board[j][i];
       }
     }
-    // return boardColumns;
+    return boardColumns;
   }
 
   //adds input boxes for blank spaces

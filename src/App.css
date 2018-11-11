@@ -1,9 +1,6 @@
 .board {
-  width: 40%;
   margin: auto;
-  margin-top: 20px;
-  padding-top: 20px;
-  vertical-align: middle;
+  margin-top: 25px;
   border-collapse: collapse;
 }
 
