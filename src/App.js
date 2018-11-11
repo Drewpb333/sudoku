@@ -117,6 +117,11 @@ class App extends Component {
   }
 
   render() {
+    const boards = {
+      originalUnsolvedBoard: this.state.originalUnsolvedBoard,
+      unsolvedBoard: this.state.unsolvedBoard,
+      board: this.state.board
+    }
     console.log(this.state.board);
     return (
       <div className="App">
@@ -124,7 +129,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
         <table className="board">
-          <Card unsolvedBoard={this.state.unsolvedBoard} original={this.state.originalUnsolvedBoard} handleInput={input=>this.handleInput(input)}/>
+          <Card boards={boards}
+          // unsolvedBoard={this.state.unsolvedBoard} original={this.state.originalUnsolvedBoard} 
+          handleInput={input=>this.handleInput(input)}/>
         </table>
         <button onClick={this.puzzleSolvedHandler}>Check Puzzle</button>
       </div>

@@ -7,7 +7,9 @@ const Square = props=> {
     const row = props.id.split("")[0];
     const column = props.id.split("")[1];
     //checks original unsolved array to see if value is 0
-    if(props.original[row][column] !== 0){
+    const {originalUnsolvedBoard} = props.boards;
+    console.log(props.boards);
+    if(originalUnsolvedBoard[row][column] !== 0){
         display = props.value;
     }
     else{

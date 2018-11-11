@@ -3,8 +3,9 @@ import Row from '../Row/Row';
 import Classes from './Card.css';
 
 const Card = props=> {
-    const unsolvedRows = props.unsolvedBoard.map((rowNum, i)=>{
-        return <Row row={i} values={rowNum} handleInput={input=>props.handleInput(input)} original={props.original}/>;
+    const {unsolvedBoard} = props.boards;
+    const unsolvedRows = unsolvedBoard.map((rowNum, i)=>{
+        return <Row row={i} values={rowNum} handleInput={input=>props.handleInput(input)} boards={props.boards}/>;
     })
     return (
         <tbody>
