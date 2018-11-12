@@ -8,7 +8,9 @@ class App extends Component {
     board: [],
     unsolvedBoard: [],
     //for persisting original state in Square components
-    originalUnsolvedBoard: []
+    originalUnsolvedBoard: [],
+    //for displaying correct and incorrect inputs
+    differentialBoard: []
   }
 
   createBoardArr = () =>{
@@ -97,13 +99,16 @@ class App extends Component {
     let solved = true;
     const solvedBoard = this.state.board;
     const unsolvedBoard = this.state.unsolvedBoard;
+    const differentialBoard = this.state.unsolvedBoard.map(x=>[...x]);
     for(let i = 0; i < solvedBoard.length; i++){
       for(let j = 0; j < solvedBoard[i].length; j++){
         if(solvedBoard[i][j] !== unsolvedBoard[i][j]) {
           solved = false;
+          differentialBoard[i][j] = false;
         }
       }
     }
+    this.setState({differentialBoard});
     if(solved){
       alert("Congrats! You Won!");
     }
@@ -120,18 +125,16 @@ class App extends Component {
     const boards = {
       originalUnsolvedBoard: this.state.originalUnsolvedBoard,
       unsolvedBoard: this.state.unsolvedBoard,
-      board: this.state.board
+      board: this.state.board,
+      differentialBoard: this.state.differentialBoard
     }
-    console.log(this.state.board);
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>       
         <table className="board">
-          <Card boards={boards}
-          // unsolvedBoard={this.state.unsolvedBoard} original={this.state.originalUnsolvedBoard} 
-          handleInput={input=>this.handleInput(input)}/>
+          <Card boards={boards} handleInput={input=>this.handleInput(input)}/>
         </table>
         <button onClick={this.puzzleSolvedHandler}>Check Puzzle</button>
       </div>

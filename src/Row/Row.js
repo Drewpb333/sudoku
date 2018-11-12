@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from '../Square/Square';
-import Classes from './Row.css';
+import './Row.css';
 
 const Row = props => {
     const squareValues = props.values.map((num, i)=>{

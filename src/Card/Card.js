@@ -1,6 +1,6 @@
 import React from 'react';
 import Row from '../Row/Row';
-import Classes from './Card.css';
+import './Card.css';
 
 const Card = props=> {
     const {unsolvedBoard} = props.boards;

@@ -27,3 +27,7 @@
     Add red background and get rid of green background until solved button clicked
     Change CSS of button
     Change title(?)
+
+11.12.2018
+    When buttonsolve is pressed, I need to change correct input squares to green and incorrect input squares to red
+    

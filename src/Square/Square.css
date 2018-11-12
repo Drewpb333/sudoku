@@ -14,6 +14,16 @@
 }
 
 .inputSquare {
+  max-width: 80%;
+  height: 80%;
+  font-size: 24px;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.correctInputSquare {
   background: #bdf3bd;
   color: #187318;
   max-width: 80%;
@@ -25,9 +35,21 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-.inputBackground {
-  background: #bdf3bd;
+.incorrectInputSquare {
+  background: #ec5b5b;
+  color: #187318;
+  max-width: 80%;
+  height: 80%;
+  font-size: 24px;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
+/* .inputBackground {
+  background: #bdf3bd;
+} */
 
 .square:focus {
   outline: none;
