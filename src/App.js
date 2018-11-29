@@ -84,7 +84,6 @@ class App extends Component {
       return[...board[i]];
     });
     const emptySquares = this.determineEmptySquares();
-    //removes three to five input values
     for(let q = 0; q < unsolvedBoard.length; q++){
       const y = Math.floor(Math.random() * emptySquares[0]) + emptySquares[1];
       for(let j = 0; j < y; j++){
