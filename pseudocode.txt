@@ -24,10 +24,13 @@
 11.11.2018
     Need to add a readme
         Several photos
-    Add red background and get rid of green background until solved button clicked
-    Change CSS of button
+    Add red background and get rid of green background until solved button clicked - done
+    Change CSS of button- done
     Change title(?)
 
 11.12.2018
     When buttonsolve is pressed, I need to change correct input squares to green and incorrect input squares to red
-    
+    Add Easy, medium, and Hard levels
+        //Easy = 1 to 2 squares missing per level, medium = 3 to 5 , hard = 6 to 8
+        //add select button in right side of header with Difficulty written next to incorrect
+        //Difficulty set to medium initially

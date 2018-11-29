@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header/Header';
 import Card from './Card/Card';
 
 class App extends Component {
   state = {
+    difficulty: "medium",
     board: [],
     unsolvedBoard: [],
     //for persisting original state in Square components
@@ -31,7 +32,6 @@ class App extends Component {
         }
       }
     }
-    // this.checkBoardColumns(board);
     const [unsolvedBoard, originalUnsolvedBoard] = this.createUnsolvedBoard(board);
     this.setState({
       board,
@@ -63,6 +63,18 @@ class App extends Component {
     return boardColumns;
   }
 
+  determineEmptySquares = () => {
+    const difficulty = this.state.difficulty;
+    switch (difficulty){
+      case "easy":
+        return [2,1];
+      case "hard":
+        return [3,6];
+      default:  //default is medium
+        return [3,3];
+    }
+  }
+
   //adds input boxes for blank spaces
   createUnsolvedBoard = board => {
     let unsolvedBoard = board.map((val, i)=>{
@@ -71,9 +83,10 @@ class App extends Component {
     let originalUnsolvedBoard = board.map((val, i)=>{
       return[...board[i]];
     });
+    const emptySquares = this.determineEmptySquares();
     //removes three to five input values
     for(let q = 0; q < unsolvedBoard.length; q++){
-      const y = Math.floor(Math.random() * 3) + 3;
+      const y = Math.floor(Math.random() * emptySquares[0]) + emptySquares[1];
       for(let j = 0; j < y; j++){
         const rand = Math.floor(Math.random() * 9);
         unsolvedBoard[q][rand] = 0;
@@ -117,6 +130,10 @@ class App extends Component {
     }
   }
 
+  changeDifficultyHanlder = level => {
+    this.setState({difficulty: level}, () => this.createBoardArr())
+  }
+
   componentWillMount = () =>{
     this.createBoardArr();
   }
@@ -130,9 +147,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>       
+        <Header className difficulty={this.state.difficulty} change={e=> this.changeDifficultyHanlder(e.target.value)}/>      
         <table className="board">
           <Card boards={boards} handleInput={input=>this.handleInput(input)}/>
         </table>

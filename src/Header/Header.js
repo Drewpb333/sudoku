@@ -4,7 +4,7 @@ import './Header.css';
 
 const Header = props => {
     const difficultyLevel = 
-        <select onChange={props.change}>
+        <select value={props.difficulty} onChange={props.change}>
             <option value="easy">Easy</option>
             <option value="medium" selected>Medium</option>
             <option value="hard">Hard</option>

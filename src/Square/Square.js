@@ -8,12 +8,11 @@ const Square = props=> {
 
     //assign correct CSS upon solve button being pressed
     let correctInput;
-    let inputCSS = "inputSquare";
+    let inputCSS = "input-square";
     let squareBackground = {};
-    // console.log(props.boards);
     if(props.boards.differentialBoard[0]){
         correctInput = props.boards.differentialBoard[row][column] === false? false: true;
-        inputCSS = correctInput? "correctInputSquare": "incorrectInputSquare";
+        inputCSS = correctInput? "correct-input-square": "incorrect-input-square";
         squareBackground = correctInput? {"background": "#bdf3bd"} :{"background": "#ec5b5b"};
     }    
 
